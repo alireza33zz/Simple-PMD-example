@@ -97,7 +97,7 @@ function format_results(solution::Dict, pm)
         va_deg = Float64[]
     )
 
-    #  Define phase mapping
+    # Define phase mapping
     phase_map = Dict(1 => "a", 2 => "b", 3 => "c")
 
     # Extract bus results
