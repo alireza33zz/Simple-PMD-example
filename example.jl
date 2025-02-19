@@ -75,7 +75,7 @@ function initialize_model(eng::Dict, config::OPFConfig)
     eng["settings"]["sbase_default"] = config.sbase_default
     eng["settings"]["power_scale_factor"] = config.power_scale_factor
     math = transform_data_model(eng)
-    
+
     # Add generator cost coefficients
     math["gen"]["1"]["cost"] = [1.0, 0.0]
 
@@ -97,7 +97,7 @@ function format_results(solution::Dict, pm)
         va_deg = Float64[]
     )
 
-    # Define phase mapping
+    #  Define phase mapping
     phase_map = Dict(1 => "a", 2 => "b", 3 => "c")
 
     # Extract bus results
