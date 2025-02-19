@@ -1,0 +1,27 @@
+Clear
+
+New Circuit.SimpleNetwork 
+~ basekV=0.416 pu=1.04 angle=0.0 ISC3=3000 ISC1=1000 phases=3 frequency=50.0 baseMVA=100
+~ bus1=1.1.2.3 
+
+Set voltagebases=[0.4]
+Set tolerance=0.000001
+Set defaultbasefreq=50
+
+New LineCode.4c_70 nphases=3 R1=0.446 X1=0.071 R0=1.505 X0=0.083 C1=0 C0=0 Units=km
+
+! Define lines
+New Line.Line1 bus1=1.1.2.3 bus2=2.1.2.3 phases=3 Linecode=4c_70 Length=0.2 Units=km
+New Line.Line2 bus1=1.1.2.3 bus2=3.1.2.3 phases=3 Linecode=4c_70 Length=0.2 Units=km
+New Line.Line3 bus1=3.1.2.3 bus2=4.1.2.3 phases=3 Linecode=4c_70 Length=0.2 Units=km
+
+! Define loads
+New Load.Load1 bus1=2.1 phases=1 kW=6 kvar=3       !unbalanced
+New Load.Load2 bus1=2.2 phases=1 kW=5 kvar=1.2       !unbalanced
+New Load.Load3 bus1=2.3 phases=1 kW=7 kvar=2.0       !unbalanced
+New Load.Load4 bus1=3.1.2.3 phases=3 kW=21 kvar=6.0  !balanced
+New Load.Load5 bus1=4.1 phases=1 kW=5.0 kvar=1.5         !unbalanced
+New Load.Load6 bus1=4.2 phases=1 kW=4.5 kvar=-1.5         !unbalanced
+New Load.Load7 bus1=4.3 phases=1 kW=6.5 kvar=1.5         !unbalanced
+
+Solve
